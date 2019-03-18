@@ -32,10 +32,6 @@ pizza = np.array(pizza)
 f.close()
 
 
-
-
-
-
 def isValid(x1, y1, x2, y2, btype):
     #if (x1, y1, x2, y2, btype) in check:
     #    return False
