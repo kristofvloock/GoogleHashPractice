@@ -1,8 +1,11 @@
 from time import sleep
 import numpy as np
 import matplotlib.pyplot as plt
+import _thread
 
-f = open('c_medium.in', 'r')
+
+
+f = open('d_big.in', 'r')
 
 solution = []
 check = set()
@@ -17,9 +20,9 @@ sum_min = L
 
 # MEDIUM
 # types = {0: (12, 1), 1: (6, 2), 2: (4, 3), 3: (3, 4), 4: (2, 6), 5: (1, 12), 6: (10, 1), 7: (5, 2), 8: (2, 5), 9: (1, 10), 10: (8, 1), 11: (4, 2), 12: (2, 4), 13: (1, 8)}
-types = {0: (12, 1), 1: (11, 1), 2: (10, 1), 3: (9, 1), 4: (8, 1), 5: (6, 2), 6: (5, 2), 7: (4, 2), 8: (4, 3), 9: (3, 4), 10: (2, 4), 11: (2, 5), 12: (2, 6), 13: (1, 8), 14: (1, 9), 15: (1, 10), 16: (1, 11), 17: (1, 12)}
+# types = {0: (12, 1), 1: (11, 1), 2: (10, 1), 3: (9, 1), 4: (8, 1), 5: (6, 2), 6: (5, 2), 7: (4, 2), 8: (4, 3), 9: (3, 4), 10: (2, 4), 11: (2, 5), 12: (2, 6), 13: (1, 8), 14: (1, 9), 15: (1, 10), 16: (1, 11), 17: (1, 12)}
 # LARGE
-#types = {0: (14, 1), 1: (7, 2), 2: (2, 7), 3: (1, 14), 4: (12, 1), 5: (6, 2), 6: (4, 3), 7: (3, 4), 8: (2, 6), 9: (1, 12)}
+types = {0: (14, 1), 1: (7, 2), 2: (2, 7), 3: (1, 14), 4: (12, 1), 5: (6, 2), 6: (4, 3), 7: (3, 4), 8: (2, 6), 9: (1, 12)}
 # SMULL!
 # types = {0: (5, 1), 1: (1, 5), 2: (4, 1), 3: (1, 4), 4: (3, 1), 5: (1, 3), 6: (2, 1), 7: (1, 2)}
 
@@ -76,13 +79,11 @@ def placeBlock(x1, y1, x2, y2, btype):
     solution.append([x1, y1, x2, y2, btype])
     check.add((x1, y1, x2, y2, btype))
 
-    
-
     plt.imshow(pizza)
     plt.colorbar()
 
     plt.show(block=False)
-    plt.pause(.001)
+    plt.pause(0.0001)
     plt.clf()
 
 
@@ -95,12 +96,11 @@ def deleteBlock():
     pizza[y1:y2 + 1, x1:x2 + 1] -= (10+btype*5)
 
     del solution[-1]
-
     plt.imshow(pizza)
     plt.colorbar()
 
     plt.show(block=False)
-    plt.pause(0.001)
+    plt.pause(0.0001)
     plt.clf()
 
 
@@ -125,8 +125,6 @@ def backtrack():
             return
     backtrack()
     return
-
-
 
 
 
